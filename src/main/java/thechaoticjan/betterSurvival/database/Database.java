@@ -1,6 +1,7 @@
 package thechaoticjan.betterSurvival.database;
 
 import org.bukkit.inventory.ItemStack;
+import thechaoticjan.betterSurvival.Main;
 import thechaoticjan.betterSurvival.helpers.ItemSerializer;
 import thechaoticjan.betterSurvival.backpack.Backpack;
 
@@ -20,7 +21,7 @@ public class Database
         String url = "jdbc:sqlite:database.db";
 
         this.connection = DriverManager.getConnection(url);
-        System.out.println("Database connection established.");
+        Main.getInstance().getLogger().info("Database connection established.");
 
         return this.connection;
     }
@@ -68,7 +69,7 @@ public class Database
         return new Backpack(items);
     }
 
-    public void safeBackpack(Backpack backpack) throws SQLException
+    public synchronized void safeBackpack(Backpack backpack) throws SQLException
     {
         ItemStack [] items = backpack.getItems();
         int i = 1;

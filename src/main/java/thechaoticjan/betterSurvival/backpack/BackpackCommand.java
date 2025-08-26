@@ -37,7 +37,7 @@ public class BackpackCommand implements CommandExecutor
                     {
                         stack = new ItemStack(Material.AIR);
                     }
-                    inventory.addItem(stack);
+                    inventory.setItem(i, stack);
                 }
 
                 player.openInventory(inventory);
