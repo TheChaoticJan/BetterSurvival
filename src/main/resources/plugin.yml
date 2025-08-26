@@ -1,0 +1,14 @@
+name: BetterSurvival
+version: '1.0'
+main: thechaoticjan.betterSurvival.Main
+api-version: '1.21'
+commands:
+  backpack:
+    aliases:
+      - bp
+      -
+  invsee:
+    aliases:
+      - inventar
+
+  ping:
