@@ -5,12 +5,12 @@ import lombok.Setter;
 import org.bukkit.plugin.java.JavaPlugin;
 import thechaoticjan.betterSurvival.backpack.BackpackCommand;
 import thechaoticjan.betterSurvival.backpack.BackpackListeners;
+import thechaoticjan.betterSurvival.commands.ConfigCommand;
 import thechaoticjan.betterSurvival.commands.InventorySeeCommand;
 import thechaoticjan.betterSurvival.commands.PingCommand;
+import thechaoticjan.betterSurvival.commands.RenameCommand;
 import thechaoticjan.betterSurvival.database.Database;
-import thechaoticjan.betterSurvival.listeners.AnvilListener;
-import thechaoticjan.betterSurvival.listeners.InventorySeeListeners;
-import thechaoticjan.betterSurvival.listeners.JoinAndLeaveListeners;
+import thechaoticjan.betterSurvival.listeners.*;
 
 import java.sql.SQLException;
 
@@ -38,11 +38,15 @@ public final class Main extends JavaPlugin
         getServer().getPluginManager().registerEvents(new AnvilListener(), this);
         getServer().getPluginManager().registerEvents(new BackpackListeners(), this);
         getServer().getPluginManager().registerEvents(new InventorySeeListeners(), this);
-        getServer().getPluginManager().registerEvents(new JoinAndLeaveListeners(), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteractionListeners(), this);
+        getServer().getPluginManager().registerEvents(new ItemDropListener(), this);
+        getServer().getPluginManager().registerEvents(new ConfigCommand(), this);
 
         getCommand("backpack").setExecutor(new BackpackCommand());
         getCommand("invsee").setExecutor(new InventorySeeCommand());
         getCommand("ping").setExecutor(new PingCommand());
+        getCommand("rename").setExecutor(new RenameCommand());
+        getCommand("config").setExecutor(new ConfigCommand());
     }
 
     @Override

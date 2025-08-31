@@ -33,6 +33,9 @@ public class Database
         String sql = "CREATE TABLE IF NOT EXISTS bp_items(id INTEGER PRIMARY KEY AUTOINCREMENT, items TEXT)";
         statement.execute(sql);
 
+        sql = "CREATE TABLE IF NOT EXISTS player_config(id VARCHAR(36), name VARCHAR(16), color INTEGER)";
+        statement.execute(sql);
+
         Statement stmt = connection.createStatement();
         stmt.executeUpdate(
                 "WITH RECURSIVE slots(n) AS ( " +
@@ -91,6 +94,8 @@ public class Database
         }
 
     }
+
+
 
 
 

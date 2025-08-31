@@ -12,3 +12,9 @@ commands:
       - inventar
 
   ping:
+
+  rename:
+    aliases:
+      - umbenennen
+
+  config:
