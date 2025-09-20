@@ -6,7 +6,7 @@ commands:
   backpack:
     aliases:
       - bp
-      -
+      - rucksack
   invsee:
     aliases:
       - inventar
@@ -18,3 +18,15 @@ commands:
       - umbenennen
 
   config:
+    aliases:
+      - farbe
+
+  ec:
+    aliases:
+      - enderchest
+      - endertruhe
+
+  showitem:
+    aliases:
+      - itemzeigen
+      - show

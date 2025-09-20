@@ -27,6 +27,8 @@ public class AnvilListener implements Listener
             return;
         }
 
+        event.getInventory().setMaximumRepairCost(35);
+
         String name = meta.getDisplayName();
         name = name.replace("&", "§");
         meta.setDisplayName(name);

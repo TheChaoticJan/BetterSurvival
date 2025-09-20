@@ -23,6 +23,10 @@ public class Database
         this.connection = DriverManager.getConnection(url);
         Main.getInstance().getLogger().info("Database connection established.");
 
+        try (Statement stmt = connection.createStatement()) {
+            stmt.execute("PRAGMA journal_mode = WAL;");
+        }
+
         return this.connection;
     }
 
@@ -31,9 +35,6 @@ public class Database
         Statement statement = getConnection().createStatement();
 
         String sql = "CREATE TABLE IF NOT EXISTS bp_items(id INTEGER PRIMARY KEY AUTOINCREMENT, items TEXT)";
-        statement.execute(sql);
-
-        sql = "CREATE TABLE IF NOT EXISTS player_config(id VARCHAR(36), name VARCHAR(16), color INTEGER)";
         statement.execute(sql);
 
         Statement stmt = connection.createStatement();

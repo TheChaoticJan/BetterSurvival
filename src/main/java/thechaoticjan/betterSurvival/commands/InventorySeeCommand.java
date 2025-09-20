@@ -1,5 +1,7 @@
 package thechaoticjan.betterSurvival.commands;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -9,6 +11,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import thechaoticjan.betterSurvival.listeners.PlayerInteractionListeners;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +32,7 @@ public class InventorySeeCommand implements CommandExecutor, TabCompleter
                 return true;
             }
 
-            Inventory inventory = Bukkit.createInventory(player, 45, "§eInventar von §6" + toSee.getName());
+            Inventory inventory = Bukkit.createInventory(player, 45, Component.text("§eInventar von ").append(MiniMessage.miniMessage().deserialize(PlayerInteractionListeners.processName(toSee))));
 
             for(int i = 0; i < toSee.getInventory().getSize(); i++)
             {

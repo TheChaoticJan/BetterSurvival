@@ -5,10 +5,7 @@ import lombok.Setter;
 import org.bukkit.plugin.java.JavaPlugin;
 import thechaoticjan.betterSurvival.backpack.BackpackCommand;
 import thechaoticjan.betterSurvival.backpack.BackpackListeners;
-import thechaoticjan.betterSurvival.commands.ConfigCommand;
-import thechaoticjan.betterSurvival.commands.InventorySeeCommand;
-import thechaoticjan.betterSurvival.commands.PingCommand;
-import thechaoticjan.betterSurvival.commands.RenameCommand;
+import thechaoticjan.betterSurvival.commands.*;
 import thechaoticjan.betterSurvival.database.Database;
 import thechaoticjan.betterSurvival.listeners.*;
 
@@ -47,6 +44,8 @@ public final class Main extends JavaPlugin
         getCommand("ping").setExecutor(new PingCommand());
         getCommand("rename").setExecutor(new RenameCommand());
         getCommand("config").setExecutor(new ConfigCommand());
+        getCommand("ec").setExecutor(new EnderchestCommand());
+        getCommand("showitem").setExecutor(new ShowItemCommand());
     }
 
     @Override
