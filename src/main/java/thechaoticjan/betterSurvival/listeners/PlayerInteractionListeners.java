@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -13,6 +14,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.permissions.Permission;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import thechaoticjan.betterSurvival.ScoreboardManager;
 import thechaoticjan.betterSurvival.commands.ConfigCommand;
 
 public class PlayerInteractionListeners implements Listener
@@ -39,6 +41,17 @@ public class PlayerInteractionListeners implements Listener
         message = MiniMessage.miniMessage().deserialize(processName(event.getPlayer())).append(MiniMessage.miniMessage().deserialize(" <dark_gray>▸ ")).append(message);
         event.setCancelled(true);
         Bukkit.broadcast(message);
+    }
+
+    @EventHandler
+    private void onNameSign(SignChangeEvent event)
+    {
+        int i = 0;
+        for(String s : event.getLines())
+        {
+            event.setLine(i, s.replace("&", "§"));
+            i++;
+        }
     }
 
     public static String processName(Player player)

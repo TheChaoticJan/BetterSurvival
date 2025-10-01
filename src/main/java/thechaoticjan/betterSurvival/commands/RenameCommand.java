@@ -45,6 +45,8 @@ public class RenameCommand implements CommandExecutor, TabCompleter
                 name.append(" ");
             }
 
+            name.deleteCharAt(name.length() - 1);
+
             meta.setDisplayName(name.toString());
             toRename.setItemMeta(meta);
 
